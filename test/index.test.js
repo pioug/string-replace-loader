@@ -55,9 +55,8 @@ describe('Webpack replace loader ...', () => {
         test: /\.js$/,
         loader: '__this-loader',
         options: {
-          search: 'var VALUE = \'\.*\'',
+          search: /var VALUE = \'.*\'/i,
           replace: 'var a = \'\'',
-          flags: 'i'
         }
       }),
       (error, stats) => {
@@ -209,85 +208,6 @@ describe('Webpack replace loader ...', () => {
           expect(error).to.equal(null)
           expect(contents).to.be.a('string')
           expect(contents).to.not.include('Replace failed (strict mode) : nonexistent value → var a')
-          done()
-        })
-      }
-    )
-  })
-
-  it('should throw error when cannot replace in single strict mode', done => {
-    webpack(getTestWebPackConfig(
-      {
-        test: /\.js$/,
-        loader: '__this-loader',
-        options: {
-          search: 'nonexistent value',
-          replace: 'var a',
-          strict: true
-        }
-      }),
-      (error, stats) => {
-        expect(error).to.equal(null)
-
-        fs.readFile(outputFilePath, 'utf8', (error, contents) => {
-          expect(error).to.equal(null)
-          expect(contents).to.be.a('string')
-          expect(contents).to.include('Replace failed (strict mode) : nonexistent value → var a')
-          done()
-        })
-      }
-    )
-  })
-
-  it('should throw error when can not replace in multiple strict mode', done => {
-    webpack(getTestWebPackConfig(
-      {
-        test: /\.js$/,
-        loader: '__this-loader',
-        options: {
-          multiple: [
-            {
-              search: 'nonexistent value',
-              replace: 'var a',
-              strict: true
-            }
-          ]
-        }
-      }),
-      (error, stats) => {
-        expect(error).to.equal(null)
-
-        fs.readFile(outputFilePath, 'utf8', (error, contents) => {
-          expect(error).to.equal(null)
-          expect(contents).to.be.a('string')
-          expect(contents).to.include('Replace failed (strict mode) : nonexistent value → var a')
-          done()
-        })
-      }
-    )
-  })
-
-  it('should throw error when search is not defined in strict mode', done => {
-    webpack(getTestWebPackConfig(
-      {
-        test: /\.js$/,
-        loader: '__this-loader',
-        options: {
-          multiple: [
-            {
-              replace: 'var a',
-              strict: true
-            }
-          ]
-        }
-      }),
-      (error, stats) => {
-        expect(error).to.equal(null)
-
-        fs.readFile(outputFilePath, 'utf8', (error, contents) => {
-          expect(error).to.equal(null)
-          expect(contents).to.be.a('string')
-          expect(contents).to.include('Replace failed (strict mode) : options.search and options.replace are required')
           done()
         })
       }
