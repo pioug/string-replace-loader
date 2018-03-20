@@ -1,3 +1,3 @@
-const processChuck = require('./lib/processChunk')
+const processChuck = require("./lib/processChunk");
 
-module.exports = processChuck
+module.exports = processChuck;
