@@ -1,7 +1,7 @@
 {
-  "name": "string-replace-loader",
-  "version": "2.1.1",
-  "description": "Replace loader for Webpack",
+  "name": "@pioug/string-replace-loader",
+  "version": "3.0.0",
+  "description": "String.replace loader for Webpack 4",
   "keywords": [
     "webpack",
     "loader",
@@ -25,13 +25,13 @@
     "webpack": "4"
   },
   "peerDependencies": {
-    "webpack": "1 || 2 || 3 || 4"
+    "webpack": "4"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Va1/string-replace-loader.git"
+    "url": "https://github.com/pioug/string-replace-loader.git"
   },
-  "homepage": "https://github.com/Va1/string-replace-loader",
+  "homepage": "https://github.com/pioug/string-replace-loader",
   "author": "Valentyn Barmashyn <barmashyn.val@gmail.com>",
   "license": "MIT",
   "private": false
