@@ -53,7 +53,7 @@ describe("Webpack replace loader ...", () => {
         test: /\.js$/,
         loader: "__this-loader",
         options: {
-          search: /var VALUE = \'.*\'/i,
+          search: /var VALUE = \".*\"/i,
           replace: "var a = ''"
         }
       }),
